@@ -1,19 +1,24 @@
+import { NavLink } from "react-router-dom";
+
 const Navbar = () => {
   const links = (
     <>
       <li>
-        <a>Home</a>
+        <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <a>Listed Books</a>
+        <NavLink to="/listedbooks">Listed Books</NavLink>
       </li>
       <li>
-        <a>Pages To Read</a>
+        <NavLink to="/pagestoread">Pages To Read</NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard">Dashboard</NavLink>
       </li>
     </>
   );
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 font-sans">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -44,8 +49,9 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
+      <div className="navbar-end flex gap-5">
+        <a className="btn bg-[#23BE0A] text-white">Sign In</a>
+        <a className="btn bg-[#59C6D2] text-white">Sign Up</a>
       </div>
     </div>
   );
