@@ -1,5 +1,6 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import { CiStar } from "react-icons/ci";
+import { addToStoredReadList } from "../../utility/addToDb";
 const BookDetails = () => {
   const { bookId } = useParams();
   console.log(bookId);
@@ -23,6 +24,16 @@ const BookDetails = () => {
     rating,
     bookName,
   } = singleBook;
+
+  const handleMarkAsRead = (id) => {
+    //Understand what to store or save => bookId
+    //Where to store: database/local storage
+    //Keep inside array, list, collection:
+    //Check : if the book is already in the mark as read list
+    //if not, then add the book to the list
+    //if yes, do not add the book
+    addToStoredReadList(id);
+  };
 
   return (
     <div className="mb-10">
@@ -74,9 +85,14 @@ const BookDetails = () => {
               </div>
             </div>
             <div className="mt-10 flex gap-6">
-              <button className="btn bg-white border-2 px-8">Read</button>
+              <button
+                onClick={() => handleMarkAsRead(bookId)}
+                className="btn bg-white border-2 px-8"
+              >
+                Mark As Read
+              </button>
               <button className="btn bg-[#50B1C9] border-2 px-8 text-white">
-                Wishlist
+                Add to Wishlist
               </button>
             </div>
           </div>
